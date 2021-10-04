@@ -1,5 +1,11 @@
 import { Movies, Movie } from '../../types';
-import { LOAD_MOVIES, ADD_MOVIE, ADD_MOVIES, DELETE_MOVIE } from './constants';
+import {
+  LOAD_MOVIES,
+  LOAD_MOVIE,
+  ADD_MOVIE,
+  DELETE_MOVIE,
+  IMPORT_MOVIE,
+} from './constants';
 
 export type MoviesType = {
   movies: Movie[];
@@ -10,13 +16,18 @@ export type LoadMoviesAction = {
   payload: Movies;
 };
 
+export type LoadMovieAction = {
+  type: typeof LOAD_MOVIE;
+  payload: Movie;
+};
+
 export type AddMovieAction = {
   type: typeof ADD_MOVIE;
   payload: Movie;
 };
 
-export type addImportMoviesAction = {
-  type: typeof ADD_MOVIES;
+export type ImportMoviesAction = {
+  type: typeof IMPORT_MOVIE;
   payload: Movies;
 };
 
@@ -27,6 +38,7 @@ export type DeleteMovieAction = {
 
 export type MovieActions =
   | LoadMoviesAction
+  | LoadMovieAction
   | AddMovieAction
-  | addImportMoviesAction
+  | ImportMoviesAction
   | DeleteMovieAction;

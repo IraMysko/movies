@@ -35,7 +35,7 @@ const MovieForm: React.FC<Props> = ({ handleAddMovie }) => {
         name="year"
         rules={[{ required: true, message: `Please add movie's year` }]}
       >
-        <Input />
+        <Input type="number" />
       </Form.Item>
 
       <Form.Item label="Format" name="format" rules={[{ required: true }]}>

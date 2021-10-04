@@ -1,5 +1,6 @@
 import { useCallback, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { SortedType } from '../../constants';
 import { useTypedSelector } from '../../hook/useTypedSelector';
 import { setSearchText, setSortType } from '../../store/filters/actions';
 import { selectSortType } from '../../store/filters/selectors';
@@ -22,7 +23,7 @@ const useHeader = () => {
     dispatch(setSearchText(event.target.value));
   };
 
-  const handleChange = (value: string) => {
+  const handleChange = (value: SortedType) => {
     dispatch(setSortType(value));
   };
 

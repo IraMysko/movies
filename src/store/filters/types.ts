@@ -1,4 +1,3 @@
-// import { SortedType } from '../../constants';
 import { SortedType } from '../../constants';
 import { SET_SEARCH_TEXT, SET_SORT_TYPE } from './constants';
 
@@ -7,9 +6,9 @@ export type FiltersType = {
   sortType: SortedType;
 };
 
-export type setSortAction = {
+export type SetSortAction = {
   type: typeof SET_SORT_TYPE;
-  payload: string;
+  payload: SortedType;
 };
 
 export type SearchTextAction = {
@@ -17,4 +16,4 @@ export type SearchTextAction = {
   payload: string;
 };
 
-export type ActionType = setSortAction | SearchTextAction;
+export type ActionType = SetSortAction | SearchTextAction;

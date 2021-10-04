@@ -29,7 +29,8 @@ const Header: React.FC = () => {
           style={{ width: 120 }}
           onChange={handleChange}
         >
-          <Option value={SortedType.ByName}>By name</Option>
+          <Option value={SortedType.ById}>Default</Option>
+          <Option value={SortedType.ByTitle}>By name</Option>
           <Option value={SortedType.ByYear}>By year</Option>
         </Select>
         <StyledInput

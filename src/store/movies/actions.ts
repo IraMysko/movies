@@ -1,9 +1,16 @@
 import { Movie, Movies } from '../../types';
-import { LOAD_MOVIES, ADD_MOVIE, ADD_MOVIES, DELETE_MOVIE } from './constants';
+import {
+  LOAD_MOVIES,
+  LOAD_MOVIE,
+  ADD_MOVIE,
+  DELETE_MOVIE,
+  IMPORT_MOVIE,
+} from './constants';
 import {
   LoadMoviesAction,
+  LoadMovieAction,
   AddMovieAction,
-  addImportMoviesAction,
+  ImportMoviesAction,
   DeleteMovieAction,
 } from './types';
 
@@ -12,14 +19,19 @@ export const loadMovies = (movies: Movies): LoadMoviesAction => ({
   payload: movies,
 });
 
-export const addMovie = (movie: Movie): AddMovieAction => ({
-  type: ADD_MOVIE,
+export const loadMovie = (movie: Movie): LoadMovieAction => ({
+  type: LOAD_MOVIE,
   payload: movie,
 });
 
-export const addImportMovies = (movies: Movies): addImportMoviesAction => ({
-  type: ADD_MOVIES,
-  payload: movies,
+export const importMovies = (movie: Movies): ImportMoviesAction => ({
+  type: IMPORT_MOVIE,
+  payload: movie,
+});
+
+export const addMovie = (movie: Movie): AddMovieAction => ({
+  type: ADD_MOVIE,
+  payload: movie,
 });
 
 export const deleteMovie = (id: number): DeleteMovieAction => ({

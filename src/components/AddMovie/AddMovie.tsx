@@ -2,9 +2,9 @@ import React from 'react';
 import { Button, Modal, Typography, Upload } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 
-import { Wrapper, Item } from './StyledAddMovie';
 import MovieForm from '../MovieForm';
 import useAddMovie from './useAddMovie';
+import { Wrapper, Item } from './StyledAddMovie';
 
 const { Title } = Typography;
 
@@ -15,6 +15,7 @@ type Props = {
 
 const AddMovie: React.FC<Props> = ({ visible, handleCloseModal }) => {
   const { handleAddMovie, beforeUpload } = useAddMovie(handleCloseModal);
+
   return (
     <Modal
       title="Add Movies"
@@ -30,7 +31,7 @@ const AddMovie: React.FC<Props> = ({ visible, handleCloseModal }) => {
         </Item>
         <Item>
           <Title level={4}>Export movies from file</Title>
-          <Upload name="file" listType="text" accept=".txt" beforeUpload={beforeUpload}>
+          <Upload disabled name="file" accept=".txt" beforeUpload={beforeUpload}>
             <Button icon={<UploadOutlined />}>Click to upload</Button>
           </Upload>
         </Item>

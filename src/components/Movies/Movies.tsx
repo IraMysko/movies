@@ -9,11 +9,12 @@ import { Container, StyledCard } from './StyledMovies';
 import useMovies from './useMovies';
 
 const Movies: React.FC = () => {
-  const { visibleMovies, makeHandleDeleteMovie } = useMovies();
+  const { movies, makeHandleDeleteMovie } = useMovies();
+
   return (
     <Container>
-      {visibleMovies.length ? (
-        visibleMovies.map(({ id, title }) => {
+      {movies.length ? (
+        movies.map(({ id, title }) => {
           return (
             <StyledCard
               key={id}

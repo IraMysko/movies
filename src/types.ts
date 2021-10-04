@@ -16,7 +16,6 @@ export type Actor = {
 };
 
 export type Values = {
-  id: number;
   actors: string;
   format: string;
   title: string;

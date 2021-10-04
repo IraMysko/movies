@@ -10,7 +10,7 @@
   },
   "rules": {
     "react/react-in-jsx-scope": "off",
-    "no-console": "off",
+    "no-console": "error",
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
     "import/prefer-default-export": 0,
     "react/jsx-props-no-spreading": 0,

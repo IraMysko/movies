@@ -1,11 +1,10 @@
 import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 
 import { selectMovies } from '../../store/movies/selectors';
 import { selectGroup } from '../../store/filters/selectors';
-import { Movie } from '../../types';
-import { getSortedMovies } from '../../utils';
 import { useTypedSelector } from '../../hook/useTypedSelector';
-import { deleteMovie } from '../../store/movies/actions';
+import { getMovies, removeMovie } from '../../store/movies/operations';
 
 const useMovies = () => {
   const movies = useTypedSelector(selectMovies);
@@ -13,21 +12,15 @@ const useMovies = () => {
   const dispatch = useDispatch();
 
   const makeHandleDeleteMovie = (id: number) => () => {
-    dispatch(deleteMovie(id));
+    dispatch(removeMovie(id));
   };
 
-  const sortedMovies: Movie[] = getSortedMovies(sortType, movies);
+  useEffect(() => {
+    dispatch(getMovies({ search: searchText, sort: sortType }));
+  }, [dispatch, searchText, sortType]);
 
-  const visibleMovies = searchText
-    ? sortedMovies.filter(({ title, actors }) => {
-        const search = searchText.toLowerCase();
-        const actorNames = actors.map(({ name }) => name.toLowerCase());
-
-        return title.toLowerCase().includes(search) || actorNames.includes(search);
-      })
-    : sortedMovies;
   return {
-    visibleMovies,
+    movies,
     makeHandleDeleteMovie,
   };
 };

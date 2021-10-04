@@ -5,7 +5,6 @@
 ## What you can do?
 
 - Find already prepared list of best movies
-- load a lotta movies by one txt file
 - Add movie
 - Delete movie
 - Sort by name or date
@@ -28,11 +27,22 @@ All files for Redux you'll find in folder `store`, foe memoization of Redux I us
 
 All files include to UI you'll find in folder `components`. All component has particular file `useComponent` with necessary logic. For child component what takes props I add `React.memo` and `useCallback`
 
-## Available Scripts
+# Load and run project
+
+before it, install Docker on your device
+
+- git clone https://github.com/IraMysko/movies.git
+- npm install
+- docker-compose up --build -d - run and build your Application
+
+## run Docker image
+
+- docker pull movies
+- docker run --name movies -p 3000:3000 -d movies
 
 In the project directory, you can run:
 
-### `yarn start`
+### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.

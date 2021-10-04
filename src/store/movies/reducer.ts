@@ -1,37 +1,14 @@
-import { LOAD_MOVIES, ADD_MOVIE, ADD_MOVIES, DELETE_MOVIE } from './constants';
+import {
+  LOAD_MOVIES,
+  LOAD_MOVIE,
+  ADD_MOVIE,
+  DELETE_MOVIE,
+  IMPORT_MOVIE,
+} from './constants';
 import { MovieActions, MoviesType } from './types';
 
 const initialState: MoviesType = {
-  movies: [
-    {
-      id: 1,
-      title: 'HEAD OF NAMES',
-      year: 2017,
-      format: 'DVD',
-      actors: [],
-    },
-    {
-      id: 2,
-      title: 'vfdfdfdf',
-      year: 1996,
-      format: 'DVD',
-      actors: [],
-    },
-    {
-      id: 3,
-      title: 'tttdvgfdddS',
-      year: 2017,
-      format: 'DVD',
-      actors: [],
-    },
-    {
-      id: 4,
-      title: 'AAA',
-      year: 2000,
-      format: 'DVD',
-      actors: [],
-    },
-  ],
+  movies: [],
 };
 
 export const moviesReducer = (state = initialState, action: MovieActions): MoviesType => {
@@ -41,12 +18,23 @@ export const moviesReducer = (state = initialState, action: MovieActions): Movie
         ...state,
         movies: action.payload,
       };
+    case LOAD_MOVIE:
+      return {
+        ...state,
+        movies: state.movies.some((movie) => movie.id === action.payload.id)
+          ? [
+              ...state.movies.map((movie) =>
+                movie.id === action.payload.id ? action.payload : movie,
+              ),
+            ]
+          : [...state.movies, action.payload],
+      };
     case ADD_MOVIE:
       return {
         ...state,
         movies: [...state.movies, action.payload],
       };
-    case ADD_MOVIES:
+    case IMPORT_MOVIE:
       return {
         ...state,
         movies: [...state.movies, ...action.payload],

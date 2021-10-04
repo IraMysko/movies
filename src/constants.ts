@@ -4,6 +4,7 @@ export enum Routes {
 }
 
 export enum SortedType {
-  ByName = 'name',
+  ById = 'id',
+  ByTitle = 'title',
   ByYear = 'year',
 }
