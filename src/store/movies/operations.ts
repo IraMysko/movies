@@ -45,7 +45,9 @@ export const addNewMovie = ({
       actors,
     });
 
-    dispatch(addMovie(response.data.data));
+    if (response.data.data) {
+      dispatch(addMovie(response.data.data));
+    }
   };
 };
 
@@ -70,7 +72,9 @@ export const showMovie = (id: number) => {
     const response = await axios(`${MOVIES_URL}/${id}`);
     const movie = response.data.data;
 
-    dispatch(loadMovie(movie));
+    if (movie) {
+      dispatch(loadMovie(movie));
+    }
   };
 };
 

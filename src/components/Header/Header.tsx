@@ -16,6 +16,8 @@ const Header: React.FC = () => {
     handleOpenModal,
     isModalVisible,
     handleCloseModal,
+    handleAuth,
+    isAuth,
   } = useHeader();
 
   return (
@@ -41,12 +43,18 @@ const Header: React.FC = () => {
         />
       </div>
 
-      <Button type="primary" onClick={handleOpenModal}>
-        Add Movies
-      </Button>
-
       {isModalVisible && (
         <AddMovie visible={isModalVisible} handleCloseModal={handleCloseModal} />
+      )}
+
+      {isAuth ? (
+        <Button type="primary" onClick={handleOpenModal}>
+          Add Movies
+        </Button>
+      ) : (
+        <Button type="primary" onClick={handleAuth}>
+          Quick Auth
+        </Button>
       )}
     </Container>
   );
