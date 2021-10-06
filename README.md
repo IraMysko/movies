@@ -37,8 +37,8 @@ before it, install Docker on your device
 
 ## run Docker image
 
-- docker pull movies
-- docker run --name movies -p 3000:3000 -d movies
+- docker build -t movies:dev .
+- docker-compose up -d --build
 
 In the project directory, you can run:
 
